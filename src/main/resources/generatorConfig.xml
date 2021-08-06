@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD
+    MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- mysql-connector-javaのパスは各自の環境に合わせて変更 -->
+    <classPathEntry
+            location="C:\Users\shuto-keisuke\.gradle\caches\modules-2\files-2.1\mysql\mysql-connector-java\8.0.23\14d64ac509adccaff444513c12646d93e4ed8be8\mysql-connector-java-8.0.23.jar"/>
+    <!-- context : データベース単位で複数定義可能 -->
+    <!-- id : データベースの識別子 -->
+    <!-- targetRuntime : 生成されたコードのランタイムターゲットを指定する。 ( MyBatis3DynamicSql : デフォルト値, MyBatis3Kotlin : 前者のkotlin互換 etc... *その他詳細は公式documentを参照 ) -->
+    <context id="MySQLTables" targetRuntime="MyBatis3DynamicSql">
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+        <!-- commentGenerator : MBGによって生成されたすべての要素にコメントを残す -->
+        <commentGenerator>
+            <!-- suppressDate : 生成されたコメントに生成タイムスタンプを含めるかどうか *その他のプロパティは公式ドキュメント参照 -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!-- jdbcConnection : データベース接続のプロパティを指定 -->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/memorandum_db"
+                userId="root"
+                password="mysql">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <!-- javaTypeResolver : databaseのカラムの型をjavaの型に解決する方式を設定 -->
+        <javaTypeResolver>
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+        <javaModelGenerator
+                targetPackage="com.memorandum.infrastructure.database.record"
+                targetProject="src/main/java">
+        </javaModelGenerator>
+<!--        <sqlMapGenerator-->
+<!--                targetPackage="database.repository"-->
+<!--                targetProject="src/main/resources">-->
+<!--        </sqlMapGenerator>-->
+        <javaClientGenerator
+                targetPackage="com.memorandum.infrastructure.database.mapper"
+                targetProject="src/main/java"
+                type="XMLMAPPER">
+        </javaClientGenerator>
+        <table tableName="%">
+<!--            <columnOverride column="role_type" typeHandler="org.apache.ibatis.type.EnumTypeHandler"-->
+<!--                            javaType="com.example.udemyevaluation.domain.enumeration.RoleType"/>-->
+        </table>
+    </context>
+</generatorConfiguration>

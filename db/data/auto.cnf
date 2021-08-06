@@ -1,5 +1,2 @@
 [auto]
-server-uuid=0ef1cbcd-f46b-11eb-a6d6-0242ac130002
-
-[mysqld]
-innodb_strict_mode = 0
+server-uuid=89d24a37-f6bd-11eb-8f83-0242ac130002

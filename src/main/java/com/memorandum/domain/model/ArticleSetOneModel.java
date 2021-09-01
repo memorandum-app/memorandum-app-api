@@ -6,17 +6,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ArticleContentModel {
-    private Integer contentId;
+public class ArticleSetOneModel {
     private String style;
     private String content;
     private String option;
 
-    public ArticleContentModel(Integer contentId, String style, String content, String option) {
-        this.contentId = contentId;
+    public ArticleSetOneModel(String style, String content, String option) {
         this.style = style;
         this.content = content;
         this.option = option;
     }
-
 }

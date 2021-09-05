@@ -35,3 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Custom ###
+db
+docker-compose.yml
+src/main/resources/generatorConfig.xml

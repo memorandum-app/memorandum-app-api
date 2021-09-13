@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <!-- mysql-connector-javaのパスは各自の環境に合わせて変更 -->
     <classPathEntry
-            location="C:\Users\shuto-keisuke\.gradle\caches\modules-2\files-2.1\mysql\mysql-connector-java\8.0.23\14d64ac509adccaff444513c12646d93e4ed8be8\mysql-connector-java-8.0.23.jar"/>
+            location="C:\Users\yukin\.gradle\caches\modules-2\files-2.1\mysql\mysql-connector-java\8.0.23\14d64ac509adccaff444513c12646d93e4ed8be8\mysql-connector-java-8.0.23.jar"/>
     <!-- context : データベース単位で複数定義可能 -->
     <!-- id : データベースの識別子 -->
     <!-- targetRuntime : 生成されたコードのランタイムターゲットを指定する。 ( MyBatis3DynamicSql : デフォルト値, MyBatis3Kotlin : 前者のkotlin互換 etc... *その他詳細は公式documentを参照 ) -->

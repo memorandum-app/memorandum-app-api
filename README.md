@@ -10,4 +10,4 @@
  - pull requestを作成したらマージ依頼を出す
  
  #### ブランチ命名規則
- #{ issue No }_{ memorandum_app_api }_{ 任意の修正に関する名前(英語) }
+ #{ issue No } _ { memorandum_app_api } _ { 任意の修正に関する名前(英語) }

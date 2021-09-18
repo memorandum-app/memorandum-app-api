@@ -2,12 +2,10 @@ package com.memorandum.presentation.controller;
 
 import com.memorandum.application.service.ArticleService;
 import com.memorandum.domain.model.ArticleBasicInfoModel;
+import com.memorandum.domain.model.ArticleListGetModel;
 import com.memorandum.domain.model.ArticleSetModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,7 +22,10 @@ public class ArticleController {
     }
 
     @GetMapping("list")
-    public List<ArticleBasicInfoModel> getArticleList(@RequestParam("language") String language) {
-        return articleSetService.getArticleList(language);
+    public List<ArticleBasicInfoModel> ArticleListGetModel(@RequestBody ArticleListGetModel articleListGetModel) {
+        System.out.println(articleListGetModel);
+        System.out.println(articleListGetModel.getAuthorId());
+        System.out.println(articleListGetModel.getLanguage());
+        return articleSetService.getArticleList(articleListGetModel);
     }
 }

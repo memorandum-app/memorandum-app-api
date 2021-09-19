@@ -36,22 +36,6 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     }
 
     @Override
-    public List<ArticleBasicInfoModel> getArticleList(String language) {
-        SelectStatementProvider selectStatement = SqlBuilder.select(ArticleBasicInfoDynamicSqlSupport.articleId, ArticleBasicInfoDynamicSqlSupport.articleTitle, ArticleBasicInfoDynamicSqlSupport.authorId, ArticleBasicInfoDynamicSqlSupport.authorName, ArticleBasicInfoDynamicSqlSupport.language, ArticleBasicInfoDynamicSqlSupport.category, ArticleBasicInfoDynamicSqlSupport.createdDate, ArticleBasicInfoDynamicSqlSupport.updateDate)
-                .from(ArticleBasicInfoDynamicSqlSupport.articleBasicInfo)
-                .where(ArticleBasicInfoDynamicSqlSupport.language, isEqualTo(language))
-                .build()
-                .render(RenderingStrategy.MYBATIS3);
-
-        List<ArticleBasicInfo> record = articleBasicInfoMapper.selectMany(selectStatement);
-        List<ArticleBasicInfoModel> articleBasicInfoList = new ArrayList<>();
-        for(ArticleBasicInfo recordItem : record) {
-            articleBasicInfoList.add(new ArticleBasicInfoModel(recordItem));
-        }
-        return articleBasicInfoList;
-    }
-
-    @Override
     public List<ArticleBasicInfoModel> getArticleListByAuthorLanguage(ArticleListGetModel articleListGetModel) {
         SelectStatementProvider selectStatement = SqlBuilder.select(ArticleBasicInfoDynamicSqlSupport.articleId, ArticleBasicInfoDynamicSqlSupport.articleTitle, ArticleBasicInfoDynamicSqlSupport.authorId, ArticleBasicInfoDynamicSqlSupport.authorName, ArticleBasicInfoDynamicSqlSupport.language, ArticleBasicInfoDynamicSqlSupport.category, ArticleBasicInfoDynamicSqlSupport.createdDate, ArticleBasicInfoDynamicSqlSupport.updateDate)
                 .from(ArticleBasicInfoDynamicSqlSupport.articleBasicInfo)

@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 public class ArticleBasicInfoModel {
+
     private Integer articleId;
 
     private String articleTitle;

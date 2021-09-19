@@ -1,6 +1,7 @@
 package com.memorandum.infrastructure.repository;
 
 import com.memorandum.domain.model.ArticleBasicInfoModel;
+import com.memorandum.domain.model.ArticleListGetModel;
 import com.memorandum.domain.model.ArticleSetModel;
 import com.memorandum.domain.repository.ArticleRepository;
 import com.memorandum.infrastructure.database.mapper.ArticleBasicInfoDynamicSqlSupport;
@@ -35,18 +36,66 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     }
 
     @Override
-    public List<ArticleBasicInfoModel> getArticleList(String language) {
+    public List<ArticleBasicInfoModel> getArticleListByAuthorLanguage(ArticleListGetModel articleListGetModel) {
         SelectStatementProvider selectStatement = SqlBuilder.select(ArticleBasicInfoDynamicSqlSupport.articleId, ArticleBasicInfoDynamicSqlSupport.articleTitle, ArticleBasicInfoDynamicSqlSupport.authorId, ArticleBasicInfoDynamicSqlSupport.authorName, ArticleBasicInfoDynamicSqlSupport.language, ArticleBasicInfoDynamicSqlSupport.category, ArticleBasicInfoDynamicSqlSupport.createdDate, ArticleBasicInfoDynamicSqlSupport.updateDate)
                 .from(ArticleBasicInfoDynamicSqlSupport.articleBasicInfo)
-                .where(ArticleBasicInfoDynamicSqlSupport.language, isEqualTo(language))
+                .where(ArticleBasicInfoDynamicSqlSupport.language, isEqualTo(articleListGetModel.getLanguage()))
+                .and(ArticleBasicInfoDynamicSqlSupport.authorId, isEqualTo(articleListGetModel.getAuthorId()))
                 .build()
                 .render(RenderingStrategy.MYBATIS3);
 
-        List<ArticleBasicInfo> record = articleBasicInfoMapper.selectMany(selectStatement);
-        List<ArticleBasicInfoModel> articleBasicInfoList = new ArrayList<>();
-        for(ArticleBasicInfo recordItem : record) {
-            articleBasicInfoList.add(new ArticleBasicInfoModel(recordItem));
+        List<ArticleBasicInfo> result = articleBasicInfoMapper.selectMany(selectStatement);
+        List<ArticleBasicInfoModel> articleBasicList = new ArrayList<>();
+        for(ArticleBasicInfo resultItem : result) {
+            articleBasicList.add(new ArticleBasicInfoModel(resultItem));
         }
-        return articleBasicInfoList;
+        return articleBasicList;
+    }
+
+    @Override
+    public List<ArticleBasicInfoModel> getArticleListByLanguage(String Language) {
+        SelectStatementProvider selectLanguageStatement = SqlBuilder.select(ArticleBasicInfoDynamicSqlSupport.articleId, ArticleBasicInfoDynamicSqlSupport.articleTitle, ArticleBasicInfoDynamicSqlSupport.authorId, ArticleBasicInfoDynamicSqlSupport.authorName, ArticleBasicInfoDynamicSqlSupport.language, ArticleBasicInfoDynamicSqlSupport.category, ArticleBasicInfoDynamicSqlSupport.createdDate, ArticleBasicInfoDynamicSqlSupport.updateDate)
+                .from(ArticleBasicInfoDynamicSqlSupport.articleBasicInfo)
+                .where(ArticleBasicInfoDynamicSqlSupport.language, isEqualTo(Language))
+                .build()
+                .render(RenderingStrategy.MYBATIS3);
+
+        List<ArticleBasicInfo> result = articleBasicInfoMapper.selectMany(selectLanguageStatement);
+        List<ArticleBasicInfoModel> articleLanguageList = new ArrayList<>();
+        for(ArticleBasicInfo resultItem : result) {
+            articleLanguageList.add(new ArticleBasicInfoModel(resultItem));
+        }
+        return articleLanguageList;
+    }
+
+    @Override
+    public List<ArticleBasicInfoModel> getArticleListByAuthor(String AuthorId) {
+        SelectStatementProvider selectAuthorStatement = SqlBuilder.select(ArticleBasicInfoDynamicSqlSupport.articleId, ArticleBasicInfoDynamicSqlSupport.articleTitle, ArticleBasicInfoDynamicSqlSupport.authorId, ArticleBasicInfoDynamicSqlSupport.authorName, ArticleBasicInfoDynamicSqlSupport.language, ArticleBasicInfoDynamicSqlSupport.category, ArticleBasicInfoDynamicSqlSupport.createdDate, ArticleBasicInfoDynamicSqlSupport.updateDate)
+                .from(ArticleBasicInfoDynamicSqlSupport.articleBasicInfo)
+                .where(ArticleBasicInfoDynamicSqlSupport.authorId, isEqualTo(AuthorId))
+                .build()
+                .render(RenderingStrategy.MYBATIS3);
+
+        List<ArticleBasicInfo> result = articleBasicInfoMapper.selectMany(selectAuthorStatement);
+        List<ArticleBasicInfoModel> articleAuthorList = new ArrayList<>();
+        for(ArticleBasicInfo resultItem : result) {
+            articleAuthorList.add(new ArticleBasicInfoModel(resultItem));
+        }
+        return articleAuthorList;
+    }
+
+    @Override
+    public List<ArticleBasicInfoModel> getArticleListByNull() {
+        SelectStatementProvider selectNullStatement = SqlBuilder.select(ArticleBasicInfoDynamicSqlSupport.articleId, ArticleBasicInfoDynamicSqlSupport.articleTitle, ArticleBasicInfoDynamicSqlSupport.authorId, ArticleBasicInfoDynamicSqlSupport.authorName, ArticleBasicInfoDynamicSqlSupport.language, ArticleBasicInfoDynamicSqlSupport.category, ArticleBasicInfoDynamicSqlSupport.createdDate, ArticleBasicInfoDynamicSqlSupport.updateDate)
+                .from(ArticleBasicInfoDynamicSqlSupport.articleBasicInfo)
+                .build()
+                .render(RenderingStrategy.MYBATIS3);
+
+        List<ArticleBasicInfo> result = articleBasicInfoMapper.selectMany(selectNullStatement);
+        List<ArticleBasicInfoModel> articleNullList = new ArrayList<>();
+        for(ArticleBasicInfo resultItem : result) {
+            articleNullList.add(new ArticleBasicInfoModel(resultItem));
+        }
+        return articleNullList;
     }
 }

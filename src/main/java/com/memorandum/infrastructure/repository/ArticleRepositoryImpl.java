@@ -99,4 +99,19 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         }
         return articleAuthorList;
     }
+
+    @Override
+    public List<ArticleBasicInfoModel> getArticleListByNull() {
+        SelectStatementProvider selectNullStatement = SqlBuilder.select(ArticleBasicInfoDynamicSqlSupport.articleId, ArticleBasicInfoDynamicSqlSupport.articleTitle, ArticleBasicInfoDynamicSqlSupport.authorId, ArticleBasicInfoDynamicSqlSupport.authorName, ArticleBasicInfoDynamicSqlSupport.language, ArticleBasicInfoDynamicSqlSupport.category, ArticleBasicInfoDynamicSqlSupport.createdDate, ArticleBasicInfoDynamicSqlSupport.updateDate)
+                .from(ArticleBasicInfoDynamicSqlSupport.articleBasicInfo)
+                .build()
+                .render(RenderingStrategy.MYBATIS3);
+
+        List<ArticleBasicInfo> result = articleBasicInfoMapper.selectMany(selectNullStatement);
+        List<ArticleBasicInfoModel> articleNullList = new ArrayList<>();
+        for(ArticleBasicInfo resultItem : result) {
+            articleNullList.add(new ArticleBasicInfoModel(resultItem));
+        }
+        return articleNullList;
+    }
 }

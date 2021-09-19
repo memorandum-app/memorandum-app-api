@@ -12,4 +12,5 @@ public interface ArticleRepository {
     public List<ArticleBasicInfoModel> getArticleListByAuthorLanguage(ArticleListGetModel articleListGetModel);
     public List<ArticleBasicInfoModel> getArticleListByLanguage(String articleListGetModel);
     public List<ArticleBasicInfoModel> getArticleListByAuthor(String articleListGetModel);
+    public List<ArticleBasicInfoModel> getArticleListByNull();
 }

@@ -28,8 +28,7 @@ public class ArticleService {
         } else if(articleListGetModel.getAuthorId() != null ) {
             return articleSetRepository.getArticleListByAuthor(articleListGetModel.getAuthorId());
         } else {
-            System.out.println("Null");
+            return articleSetRepository.getArticleListByNull();
         }
-        return null;
     }
 }

@@ -23,9 +23,6 @@ public class ArticleController {
 
     @GetMapping("list")
     public List<ArticleBasicInfoModel> ArticleListGetModel(@RequestBody ArticleListGetModel articleListGetModel) {
-        System.out.println(articleListGetModel);
-        System.out.println(articleListGetModel.getAuthorId());
-        System.out.println(articleListGetModel.getLanguage());
         return articleSetService.getArticleList(articleListGetModel);
     }
 }

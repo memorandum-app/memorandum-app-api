@@ -16,4 +16,12 @@ public class ArticleSetOneModel {
         this.content = content;
         this.option = option;
     }
+    @Override
+    public String toString() {
+        if( style == null) {
+            return null;
+        } else {
+            return style;
+        }
+    }
 }

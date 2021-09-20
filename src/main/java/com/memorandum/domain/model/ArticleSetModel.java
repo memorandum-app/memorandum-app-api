@@ -91,6 +91,13 @@ public class ArticleSetModel {
         this.articleContentList.add(new ArticleSetOneModel(articleSet.getStyle62(), articleSet.getContent62(), articleSet.getOption62()));
         this.articleContentList.add(new ArticleSetOneModel(articleSet.getStyle63(), articleSet.getContent63(), articleSet.getOption63()));
         this.articleContentList.add(new ArticleSetOneModel(articleSet.getStyle64(), articleSet.getContent64(), articleSet.getOption64()));
+
+        for(int i = 63; i >= 0; i--) {
+            String str = articleContentList.get(i).toString();
+            if(str == null) {
+                articleContentList.remove(i);
+            }
+        }
     }
 
     public Integer getArticleId() {

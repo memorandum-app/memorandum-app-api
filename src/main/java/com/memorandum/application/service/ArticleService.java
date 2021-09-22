@@ -2,6 +2,7 @@ package com.memorandum.application.service;
 
 import com.memorandum.domain.model.ArticleBasicInfoModel;
 import com.memorandum.domain.model.ArticleListGetModel;
+import com.memorandum.domain.model.ArticleSetForm;
 import com.memorandum.domain.model.ArticleSetModel;
 import com.memorandum.domain.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class ArticleService {
     @Autowired
     private ArticleRepository articleSetRepository;
 
-    public ArticleSetModel getArticleSetById(Integer Id) {
+    public ArticleSetForm getArticleSetById(Integer Id) {
         return  articleSetRepository.getArticleSetById(Id);
     }
 

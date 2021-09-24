@@ -2,6 +2,7 @@ package com.memorandum.infrastructure.repository;
 
 import com.memorandum.domain.model.ArticleBasicInfoModel;
 import com.memorandum.domain.model.ArticleListGetModel;
+import com.memorandum.domain.model.ArticleSetForm;
 import com.memorandum.domain.model.ArticleSetModel;
 import com.memorandum.domain.repository.ArticleRepository;
 import com.memorandum.infrastructure.database.mapper.ArticleBasicInfoDynamicSqlSupport;
@@ -31,8 +32,8 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     private ArticleSetMapper articleSetMapper;
 
     @Override
-    public ArticleSetModel getArticleSetById(Integer id) {
-        return new ArticleSetModel(articleSetMapper.selectByPrimaryKey(id));
+    public ArticleSetForm getArticleSetById(Integer id) {
+        return new ArticleSetForm(new ArticleSetModel(articleSetMapper.selectByPrimaryKey(id)));
     }
 
     @Override

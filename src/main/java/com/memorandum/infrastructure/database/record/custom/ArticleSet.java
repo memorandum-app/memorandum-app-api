@@ -1,5 +1,7 @@
 package com.memorandum.infrastructure.database.record.custom;
 
+import com.memorandum.domain.model.ArticleSetModel;
+
 import javax.annotation.Generated;
 import java.time.LocalDate;
 

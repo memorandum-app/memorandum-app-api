@@ -2,10 +2,13 @@ package com.memorandum.domain.model;
 
 
 import com.memorandum.infrastructure.database.record.custom.ArticleSet;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ArticleSetModel {
     private Integer articleId;
